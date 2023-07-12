@@ -1,0 +1,50 @@
+
+
+fun testeDelay() {
+delay(50);
+print(analogRead(0));
+print("time is [micro]:" + str(micros()));
+print("time is [millis]:" + str(millis()));
+print(peekOutput(2));
+if (peekOutput(2)){
+digitalWrite(2, LOW);
+analogWrite(1, 50);}
+
+else{
+digitalWrite(2, HIGH);
+analogWrite(1, 200);
+}
+}
+
+void setup(){
+print("setting pinmode");
+print(sqrt(3));
+print(constrain(2,0,10));
+print(constrain(2,3,10));
+print(constrain(2,0,1));
+pinMode(1,OUTPUT);
+pinMode(2,OUTPUT);
+
+}
+var duration;
+void loop(){
+//testeDelay();
+duration = pulseIn(0,HIGH);
+print(duration);
+}
+
+
+
+print(" doing main");
+var a=2;
+var b=3;
+a+=b;
+b*=3
+print("a: " + str(a));
+print("b: " + str(b));
+
+//print("Executed in " + str(clock() - startTime) + " second(s).")
+setup();
+loop();
+//var d=3;
+

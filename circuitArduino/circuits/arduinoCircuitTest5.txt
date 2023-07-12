@@ -1,0 +1,13 @@
+$ 3 5.0E-6 30.13683688681966 50 5.0 50
+& arduinoTest.lox C:\Users\FranciscoMateus\workspace\pl-projects-master\pl-projects-master\jlox\examples\\arduinoTest.lox
+203 320 176 264 176 0 0
+203 320 216 264 216 0 1
+203 320 248 264 248 0 2
+r 320 216 400 216 0 100.0
+r 320 248 400 240 0 100.0
+w 400 216 400 240 0
+g 400 240 400 288 0
+r 320 176 400 176 0 100.0
+w 400 176 400 216 0
+R 400 72 456 64 0 0 40.0 5.0 0.0 0.0 0.5
+s 320 176 400 72 0 1 false

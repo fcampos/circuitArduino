@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/arduinoSOFIA"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ciir2/commons-io-2.5.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/freesvg.jar"/>
+	<classpathentry kind="lib" path="circuits/circuit.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_101"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml-v0.38-libs/ejml-v0.38-libs/ejml-core-0.38.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml-v0.38-libs/ejml-v0.38-libs/ejml-ddense-0.38.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml-v0.38-libs/ejml-v0.38-libs/ejml-dsparse-0.38.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/matconsolectl-4.4.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/circuitMatlab/jmi.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

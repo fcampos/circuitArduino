@@ -1,0 +1,52 @@
+#define BIN  0;
+#define OCT  1;
+#define DEC  2;
+#define HEX  3;
+
+var in1=13;
+var in2;
+var HIGH = true;
+var LOW = false;
+var OUTPUT = true;
+var INPUT = false;
+var LED_BUILTIN = 13;
+var A0 = 0;
+var A1 = 1;
+import "std:LoxMath"
+import "std:Bitwise"
+import "std:ArduinoLib"
+
+class Serial {
+  class println(var string) {
+    serialPrintln(string);
+  }
+  
+ class print(var string) {
+    serialPrint(string);
+  }
+  
+  
+  class  printDummy() {
+    print ("Enjoy your breakfast.");
+  }
+  class  begin(var dummy){
+  //do nothing
+  }
+ 
+}
+Serial.println("I printed");
+//Serial.print("\t\t");
+//Serial.print("I printed format");
+//Serial.println("I printed line1");
+//Serial.println("I printed line2");
+//Serial.println("I printed line3");
+//Serial.printDummy();
+//Serial = SerialClass();
+
+//Serial.printDummy();
+//Serial.printDummy();
+//var IN = [false, false, false, false, false, false, false, false, false, false ]; // 10 outputs
+var IN = {"0", "1" ,"0" ,"1" }; // 10 outputs
+Serial.println(IN[1]);
+//fun digitalWrite ( var index, var value){
+//IN[index] = value;}

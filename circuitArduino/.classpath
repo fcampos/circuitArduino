@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="circuits/circuit.jar"/>
+	<classpathentry kind="lib" path="commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="engine.jar"/>
+	<classpathentry kind="lib" path="jfreesvg-3.3.jar"/>
+	<classpathentry kind="lib" path="jmi.jar"/>
+	<classpathentry kind="lib" path="matconsolectl-4.4.2.jar"/>
+	<classpathentry kind="lib" path="statictrigger.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/arduinoSOFIA"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml_V041/ejml-core-0.41.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml_V041/ejml-ddense-0.41.jar"/>
+	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/workspace/ejml_V041/ejml-dsparse-0.41.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
