@@ -8,8 +8,8 @@
 	<classpathentry kind="lib" path="jmi.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/arduinoSOFIA"/>
-	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/ejml-core-0.41.jar"/>
-	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/ejml-ddense-0.41.jar"/>
-	<classpathentry kind="lib" path="C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/ejml-dsparse-0.41.jar"/>
+	<classpathentry kind="lib" path="ejml-core-0.41.jar"/>
+	<classpathentry kind="lib" path="ejml-ddense-0.41.jar"/>
+	<classpathentry kind="lib" path="ejml-dsparse-0.41.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
