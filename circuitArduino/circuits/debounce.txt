@@ -1,5 +1,5 @@
 $ 3 5.0E-6 777.239267340082 50 5.0 50
-& Debounce.ino C:\Users\FranciscoMateus\workspace\circuitMatlab\arduino\Debounce\Debounce.ino
+& Debounce.ino \Debounce\Debounce.ino.standard.hex
 203 368 136 416 136 0 2
 R 296 136 256 136 0 0 40.0 5.0 0.0 0.0 0.5
 r 368 136 368 208 0 100.0

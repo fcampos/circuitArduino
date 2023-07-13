@@ -1,4 +1,4 @@
 $ 3 5.0E-6 10.20027730826997 50 5.0 50
-& AnalogReadSerial.ino C:\Users\FranciscoMateus\workspace\circuitMatlab\arduino\AnalogReadSerial\\AnalogReadSerial.ino
+& AnalogReadSerial.ino \AnalogReadSerial\\AnalogReadSerial.ino.standard.hex
 204 272 272 328 272 0 0
 R 272 272 200 272 0 1 40.0 5.0 0.0 0.0 0.5

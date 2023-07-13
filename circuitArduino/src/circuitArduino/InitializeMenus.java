@@ -160,7 +160,7 @@ public class InitializeMenus {
 		mArduino.add(sim.arduinoSelectSketchItem = getMenuItem("Select sketch"));
 		mArduino.add(sim.arduinoEditFileItem = getMenuItem("Edit file"));
 		mArduino.add(sim.arduinoReloadItem = getMenuItem("Reload"));
-		mArduino.add(sim.arduinoEditOptionItem = getMenuItem("Options"));
+		//mArduino.add(sim.arduinoEditOptionItem = getMenuItem("Options"));
 		
 
 		///////////////////////////////////////

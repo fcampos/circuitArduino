@@ -1,5 +1,5 @@
 $ 3 1.4999999999999999E-5 204.8780465020098 50 5.0 50
-& Arrays.ino C:\Users\FranciscoMateus\workspace\circuitMatlab\arduino\Arrays\Arrays.ino
+& Arrays.ino \arduino\Arrays\Arrays.ino
 203 208 240 160 240 0 6
 203 208 280 160 280 0 7
 203 208 80 160 80 0 2

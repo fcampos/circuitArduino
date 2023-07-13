@@ -1563,7 +1563,7 @@ public class CirSim extends JPanel
 		selectArduinoFile();
 	if (e.getSource() == arduinoEditFileItem)
 		try {
-			Desktop.getDesktop().open(new File(sketchURL));
+			Desktop.getDesktop().open(new File(arduino.getSourceFile()));
 		} catch (IOException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();

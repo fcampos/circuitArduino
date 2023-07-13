@@ -1,0 +1,10 @@
+This is a circuit simulator derived from the java circuit simulator developed by Paul Falstad. (https://www.falstad.com/circuit/ ; https://github.com/pfalstad/circuitjs1)
+
+It essentially includes all the features of that simulator. Later, Paul Falstad and collaborators ported the simulator to javascript and much more features have been added since, which are not included in the present simulator. Nevertheless the javascript project still relies on java and conversion of classes from that project may be feasible with moderate effort.
+
+The present simulator has as an added feature the possibility of simulating arduino sketches. 
+The arduino simulator is based on the Sofia project, from Kollins Gabriel Lima (https://github.com/kollinslima/ProjectSOFIA ; https://project-sofia.gitbook.io/project/).
+That is an arduino simulator developed for android devices which was modified to integrate the circuit simulator.
+For more details please see the documentation.
+
+I thank Paul Falstad, Kollins Lima and Paulo Gonçalves for making their work public and for their kind support.

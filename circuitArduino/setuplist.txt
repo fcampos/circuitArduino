@@ -372,7 +372,6 @@ spark-marx.txt Marx Generator
 +Basic
 blink.txt blink
 analogReadSerial.txt analogReadSerial
-arduinoCircuitTest5.txt arduinoCircuitTest5
 digitalReadSerial.txt digitalReadSerial
 fade.txt fade
 -

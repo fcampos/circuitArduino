@@ -1,5 +1,5 @@
 $ 3 5.0E-6 657.9188356707491 50 5.0 50
-& AnalogInOutSerial.ino C:\Users\FranciscoMateus\workspace\circuitMatlab\arduino\AnalogInOutSerial\AnalogInOutSerial.ino
+& AnalogInOutSerial.ino \AnalogInOutSerial\AnalogInOutSerial.ino.standard.hex
 203 312 224 280 224 0 9
 204 176 208 216 208 0 0
 r 360 224 456 224 0 200.0

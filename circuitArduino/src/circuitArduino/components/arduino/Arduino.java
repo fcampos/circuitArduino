@@ -9,6 +9,12 @@ import com.kollins.project.sofia.UCModule;
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.output.OutputFragment_ATmega328P;
 
 import circuitArduino.CirSim;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+import java.io.File;
 
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.IOModule_ATmega328P;
 //import com.dandigit.jlox.Lox;
@@ -136,6 +142,28 @@ public void terminate(){
 	}
 	existsFlag= false;*/
 	existsFlag= false;
+}
+public String getSourceFile()
+{ String sourceFile = "";
+Object[] filesInFolder;
+
+
+File dummyFile = new File(sim.sketchURL);
+//Path folder = dummyFile.toPath().getParent();
+
+try {
+	Stream<Path> path = Files.walk(dummyFile.toPath().getParent());
+	System.out.println("Parent: " + dummyFile.toPath().getParent().toString());
+	path = path.filter(var -> var.toString().endsWith(".ino"));
+	filesInFolder  =  path.toArray();
+	System.out.println("filesInFolder: " + filesInFolder[0]);
+	if (filesInFolder[0]!=null)
+		return  String.valueOf(filesInFolder[0]);//path.peek.toString();    //filesInFolder[0];
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+return sourceFile;
 }
 public boolean exists(){ return existsFlag;}
 public void cycle(){

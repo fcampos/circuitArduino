@@ -1,5 +1,5 @@
 $ 3 5.0E-6 657.9188356707491 50 5.0 50
-& AnalogInput.ino C:\Users\FranciscoMateus\workspace\circuitMatlab\arduino\AnalogInput\AnalogInput.ino
+& AnalogInput.ino \AnalogInput\AnalogInput.ino.standard.hex
 203 304 184 272 184 0 13
 204 168 168 208 168 0 0
 r 352 184 448 184 0 200.0
