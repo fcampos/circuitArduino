@@ -1,5 +1,5 @@
-$ 3 5.0E-6 10.20027730826997 50 5.0 50
-& DigitalReadSerial.ino \DigitalReadSerial\\DigitalReadSerial.ino.standard.hex
+$ 3 4.0E-6 213.5949733220415 50 5.0 50
+& DigitalReadSerial.ino C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/\arduino\\DigitalReadSerial\\DigitalReadSerial.ino.standard.hex
 203 384 232 424 232 0 2
 R 288 232 240 232 0 0 40.0 5.0 0.0 0.0 0.5
-s 288 232 384 232 0 1 true
+s 288 232 384 232 0 1 true null

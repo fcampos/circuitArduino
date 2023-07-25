@@ -1,6 +1,6 @@
-$ 3 2.4999999999999998E-5 166.34793248332176 50 5.0 50
-& Blink.ino Blink\\Blink.ino.standard.hex
-203 264 160 240 160 0 3
-r 264 160 360 160 0 100.0
-162 360 160 360 256 1 2.1024259 1.0 0.0 0.0 LED
-g 360 256 360 288 0
+$ 3 4.0E-6 1788.4088156047296 50 5.0 50
+& Blink.ino C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/\arduino\Blink\\Blink.ino.standard.hex
+203 296 168 272 168 0 3
+r 296 168 392 168 0 100.0
+162 392 168 392 264 1 2.1024259 1.0 0.0 0.0 LED
+g 392 264 392 296 0
