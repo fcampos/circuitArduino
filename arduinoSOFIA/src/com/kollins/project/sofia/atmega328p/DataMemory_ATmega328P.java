@@ -24,8 +24,8 @@ package com.kollins.project.sofia.atmega328p;
 
 import com.kollins.project.sofia.UCModule;
 import com.kollins.project.sofia.UCModule_View;
-import com.kollins.project.sofia.extra.memory_map.MemoryAdapter;
-import com.kollins.project.sofia.extra.memory_map.MemoryFragment;
+//import com.kollins.project.sofia.extra.memory_map.MemoryAdapter;
+//import com.kollins.project.sofia.extra.memory_map.MemoryFragment;
 import com.kollins.project.sofia.ucinterfaces.DataMemory;
 import com.kollins.project.sofia.ucinterfaces.IOModule;
 
@@ -37,6 +37,7 @@ import java.util.TimerTask;
 
 /**
  * Created by kollins on 3/9/18.
+ * Modified by Francisco Campos
  */
 
 public class DataMemory_ATmega328P implements DataMemory {
@@ -507,7 +508,7 @@ public class DataMemory_ATmega328P implements DataMemory {
 
         updateMemoryUsage(byteAddress);
 
-        if (updateMemMapFlag && !MemoryAdapter.isFiltering) {
+        if (updateMemMapFlag) {// && !MemoryAdapter.isFiltering) {
             updateMemMapFlag = false;
          /*   UCModule_View.screenUpdater.post(new Runnable() {
                 @Override
@@ -583,7 +584,7 @@ public class DataMemory_ATmega328P implements DataMemory {
             notify(byteAddress, UCModule_View.simulatedTime);
         }
 
-        if (updateMemMapFlag && !MemoryAdapter.isFiltering) {
+        if (updateMemMapFlag) {// && !MemoryAdapter.isFiltering) {
             updateMemMapFlag = false;
           /*  UCModule_View.screenUpdater.post(new Runnable() {
                 @Override
@@ -612,7 +613,7 @@ public class DataMemory_ATmega328P implements DataMemory {
 //        new NotifyIO(this).execute(byteAddress);
         notifyIO(byteAddress);
 
-        if (updateMemMapFlag && !MemoryAdapter.isFiltering) {
+        if (updateMemMapFlag) {// && !MemoryAdapter.isFiltering) {
             updateMemMapFlag = false;
          /*   UCModule_View.screenUpdater.post(new Runnable() {
                 @Override
@@ -654,7 +655,7 @@ public class DataMemory_ATmega328P implements DataMemory {
         sdramMemory[byteAddressLow] = byteLow;
         sdramMemory[byteAddressHigh] = byteHigh;
 
-        if (updateMemMapFlag && !MemoryAdapter.isFiltering) {
+        if (updateMemMapFlag) {// && !MemoryAdapter.isFiltering) {
             updateMemMapFlag = false;
         /*    UCModule_View.screenUpdater.post(new Runnable() {
                 @Override
@@ -692,7 +693,7 @@ public class DataMemory_ATmega328P implements DataMemory {
             sdramMemory[byteAddress] = (byte) (sdramMemory[byteAddress] | (0x01 << bitPosition));     //Set
         }
 
-       if (updateMemMapFlag && !MemoryAdapter.isFiltering) {
+       if (updateMemMapFlag) {// && !MemoryAdapter.isFiltering) {
             updateMemMapFlag = false;
             /* //  UCModule_View.screenUpdater.post(new Runnable() {
                 @Override
@@ -1035,7 +1036,7 @@ public class DataMemory_ATmega328P implements DataMemory {
         @Override
         public void run() {
             updateMemMapFlag = true;
-            MemoryFragment.updateMemoryUsage(getMemoryUsage(), getMemorySize());
+    //        MemoryFragment.updateMemoryUsage(getMemoryUsage(), getMemorySize());
         }
     }
 }

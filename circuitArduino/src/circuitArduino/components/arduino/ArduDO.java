@@ -83,24 +83,25 @@ public class ArduDO extends CircuitElm {
 		drawValues(g, s, hs);
 		//    arduino.DI[port]=volts[0]>=2.5 ;
 	}
-	protected void setCurrent(int x, double c) { current = sim.arduino.pinMode[port]? c:-c; }//sim.arduino.ucModule.getPinMode(port)? c:-c; }
+	protected void setCurrent(int x, double c) { current = sim.arduino.ucModule.getPinMode(port)? c:-c; }//pinMode[port]? c:-c; }//sim.arduino.ucModule.getPinMode(port)? c:-c; }
 	protected void stamp() {
 		//System.out.println(Arrays.toString(arduino.DO));
 		//vOutput = arduino.DO[port]? 5:0 ;// writeDO(port)? 5:0 ;
 		//	System.out.println("stamping");
-		//	System.out.println("pin mode: "+ arduino.PinMode[port]);
-		if  (sim.arduino.pinMode[port]) //( sim.arduino.ucModule.getPinMode(port))//(arduino.PinMode[port]) // if it is an output, behaves like a voltage source
+		//	System.out.println("pin mode: "+ sim.arduino.ucModule.getPinMode(port));//.pinMode[port]);
+		
+		if  (sim.arduino.ucModule.getPinMode(port))//.pinMode[port]) //( sim.arduino.ucModule.getPinMode(port))//(arduino.PinMode[port]) // if it is an output, behaves like a voltage source
 		{//System.out.println("updating voltage");
 			//vOutput = arduino.DO[port]? 5:0 ;
 			vOutput = simulatorOutputs.pinbuffer[port]==1? 5:0 ;
-			//System.out.println("stamping output");
+		//	System.out.println("stamping output " + simulatorOutputs.pinbuffer[port]);
 			sim.algorithm.stampVoltageSource(0, nodes[0], voltSource);
 		
 		}
 	}
 	public double getVoltageDiff() { return volts[0]; }
 	protected void doStep() {
-		if (! sim.arduino.pinMode[port]){//(!sim.arduino.ucModule.getPinMode(port)){// (!arduino.PinMode[port]){
+		if (! sim.arduino.ucModule.getPinMode(port)) {//.pinMode[port]){//(!sim.arduino.ucModule.getPinMode(port)){// (!arduino.PinMode[port]){
 			sim.arduino.ucModule.setInput(volts[0]>=2.5?1:0, port);
 		//	System.out.println("input");
 		/*	arduino.DI[port]=volts[0]>=2.5 ;//
@@ -153,13 +154,13 @@ public class ArduDO extends CircuitElm {
 							
 		}
 		protected int getVoltageSourceCount() {  //System.out.println("voltage source count: "+ (sim.arduino.ucModule.getPinMode(port)?1:0));
-		return  sim.arduino.pinMode[port]?1: 0;}//sim.arduino.ucModule.getPinMode(port)?1: 0; }// arduino.PinMode[port]? 1: 0; }// if it is an output, behaves like a voltage source
+		return  sim.arduino.ucModule.getPinMode(port)?1: 0;}//.pinMode[port]?1: 0;}//sim.arduino.ucModule.getPinMode(port)?1: 0; }// arduino.PinMode[port]? 1: 0; }// if it is an output, behaves like a voltage source
 		protected void getInfo(String arr[]) {
 			arr[0] = "Arduino Digital Pin " + port;
 			arr[1] = "I = " + getCurrentText(getCurrent());
 			arr[1] = "V = " + getVoltageText(getVoltageDiff());
 		}
-		protected boolean hasGroundConnection(int n1) { return  sim.arduino.pinMode[port];};//sim.arduino.ucModule.getPinMode(port); }//return arduino.PinMode[port]? true: false; }// if it is an output, behaves like a voltage source
+		protected boolean hasGroundConnection(int n1) { return  sim.arduino.ucModule.getPinMode(port);};//.pinMode[port];};//sim.arduino.ucModule.getPinMode(port); }//return arduino.PinMode[port]? true: false; }// if it is an output, behaves like a voltage source
 	//	boolean needsShortcut() {return sim.arduino.PinMode[port]? true: false; }// if it is an output, behaves like a voltage source
 		 protected boolean needsArduino(){ return true;};
 		public EditInfo getEditInfo(int n) {

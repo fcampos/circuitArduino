@@ -29,7 +29,7 @@
 
 // constants won't change. They're used here to set pin numbers:
 const int buttonPin = 2;    // the number of the pushbutton pin
-const int ledPin = 13;      // the number of the LED pin
+const int ledPin = 3;      // the number of the LED pin
 
 // Variables will change:
 int ledState = HIGH;         // the current state of the output pin
@@ -80,7 +80,6 @@ void loop() {
 
   // set the LED:
   digitalWrite(ledPin, ledState);
-
   // save the reading. Next time through the loop, it'll be the lastButtonState:
   lastButtonState = reading;
 }

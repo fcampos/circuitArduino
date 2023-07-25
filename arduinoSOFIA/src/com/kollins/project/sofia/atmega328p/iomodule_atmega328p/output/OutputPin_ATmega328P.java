@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 /**
  * Created by kollins on 3/14/18.
+ * Modified by Francisco Campos
  */
 
 public class OutputPin_ATmega328P {

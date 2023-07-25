@@ -22,6 +22,7 @@ import com.kollins.project.sofia.ucinterfaces.IOModule;
 
 /**
  * Created by kollins on 3/21/18.
+ * Modified by Francisco Campos
  */
 
 public class InputPin_ATmega328P {

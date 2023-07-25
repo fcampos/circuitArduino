@@ -86,7 +86,7 @@ void getSetupList(Menu menu, boolean retry) {
 			if (line.charAt(0) == '>')
 			    first = true;
 			String file = line.substring(first ? 1 : 0, i);
-			menu.add(sim.menuInitializer.getMenuItem(title, "setup " + file));
+			menu.add(sim.menuInitializer.getMenuItem(title, "setup " + file)); // THIS IS TO LOAD EXAMPLES FROM SETUPLIST
 			if (first && sim.startCircuit == null) {
 				sim.startCircuit = file;
 				sim.startLabel = title;
@@ -119,8 +119,11 @@ void getSetupList(Menu menu, boolean retry) {
 	   URL url ;
 	   //System.out.println(str);
 	   try {
-		   if (!sim.usePanel)
+		   if (!sim.usePanel) {
 		   url = new URL(sim.getCodeBase() + "circuits/" + str);
+		   sim.circuitFilePath = sim.getCodeBase() + "circuits/" + str;
+		   sim.circuitName = str;
+		   sim.frameWrapper.setTitle(str);}
 		   else
 			url = new URL("file:///" + sim.startDir + "\\Falstad\\"+ "circuits\\" + str);
 		   System.out.println(url);
@@ -204,7 +207,7 @@ void getSetupList(Menu menu, boolean retry) {
 			break;
 		    }
 		    if (tint == '&') {
-				// ignore afilter-specific stuff
+		    	// ignore afilter-specific stuff
 		    	sim.sketchName = st.nextToken();
 		    	sim.sketchURL = st.nextToken();
 		    	Path path = Paths.get(sim.sketchURL);
@@ -212,40 +215,48 @@ void getSetupList(Menu menu, boolean retry) {
 		    	System.out.println("-----" + path.toString());
 		    	if (!Files.isRegularFile(path)) {
 		    		URL url;
-		    		if (!sim.applet.startFolder.isEmpty()){
-		    			System.out.println("file:///" + sim.applet.startFolder);
-		    			  url = new URL("file:///" +  sim.applet.startFolder+ File.separator+ "arduino"+ File.separator + sim.sketchURL);
-		    //			  System.out.println("file:///" +System.getProperty("user.dir"));
-				//    	    System.out.println(sketchName);
-				  //  	    System.out.println(File.separator);
-				    //	    System.out.println(File.separator);
-		    			  }
-		    		else{
-		    	   // url = new URL("file:///" +System.getProperty("user.dir")+ File.separator+ "arduino"+ File.separator + sim.sketchURL);
-		    			sim.sketchURL = sim.getCodeBase().getPath() + File.separator + "arduino" + File.separator +  sim.sketchURL;
+		    		sim.sketchURL = sim.getCodeBase().getPath() + File.separator + "arduino" + File.separator +  sim.sketchURL;
+		    		path = Paths.get(sim.sketchURL);
+		    		if (!Files.isRegularFile(path)) {
+		    		System.out.println("Arduino File not valid.");
 		    		}
+		    		else
+		    			sim.arduino.reload();
+		    	/*	if (!sim.applet.startFolder.isEmpty()){
+		    			System.out.println("file:///" + sim.applet.startFolder);
+		    			url = new URL("file:///" +  sim.applet.startFolder+ File.separator+ "arduino"+ File.separator + sim.sketchURL);
+		    			//			  System.out.println("file:///" +System.getProperty("user.dir"));
+		    			//    	    System.out.println(sketchName);
+		    			//  	    System.out.println(File.separator);
+		    			//	    System.out.println(File.separator);
+		    		}
+		    		else{
+		    			// url = new URL("file:///" +System.getProperty("user.dir")+ File.separator+ "arduino"+ File.separator + sim.sketchURL);
+		    			sim.sketchURL = sim.getCodeBase().getPath() + File.separator + "arduino" + File.separator +  sim.sketchURL;
+		    		}*/
 		    		//System.out.println(url.toString());
 		    		//sim.sketchURL = url.toString();
-		    		  // path is regular file
-		    		}
-		   // 	else System.out.println("no need to correct");
-		   // 	arduinoSketchItem.setLabel("Sketch: "+sketchName);
-		/*    if	(Files.notExists(path)) {
+		    		// path is regular file
+		    	}
+		    		
+		    	// 	else System.out.println("no need to correct");
+		    	// 	arduinoSketchItem.setLabel("Sketch: "+sketchName);
+		    	/*    if	(Files.notExists(path)) {
 		    	System.out.println("Arduino ino File does not exist");
 		    	sim.sketchURL =  sim.getCodeBase().getPath() + File.separator + "arduino" + File.separator + "blank" + File.separator + "blank.ino.standard.hex" ;//"C:\\Users\\FranciscoMateus\\workspace\\pl-projects-master\\pl-projects-master\\jlox\\examples\\arduinoTest.lox";
 		    	sim.sketchName = "blank.ino.standard.hex";
 		    }*/
-		   
-		    else	
-		    	sim.arduino.reload();
-		 //   File dummyFile = new File(sim.sketchURL);
-		  //  File folder = dummyFile.toPath().getParent().toFile();
-		     	//path = Paths.get(sim.sketchURL);
-		     	
-				break;
-			    }
+
+		    	else	
+		    		sim.arduino.reload();
+		    	//   File dummyFile = new File(sim.sketchURL);
+		    	//  File folder = dummyFile.toPath().getParent().toFile();
+		    	//path = Paths.get(sim.sketchURL);
+
+		    	break;
+		    }
 		    if (tint >= '0' && tint <= '9')
-			tint = new Integer(type).intValue();
+		    	tint = new Integer(type).intValue();
 		    int x1 = new Integer(st.nextToken()).intValue();
 		    int y1 = new Integer(st.nextToken()).intValue();
 		    int x2 = new Integer(st.nextToken()).intValue();
@@ -434,6 +445,8 @@ void getSetupList(Menu menu, boolean retry) {
     			String content = IOUtils.toString( in,"UTF-8" ) ;
     			IOUtils.closeQuietly(in);
     			sim.filetools.readSetup(content);		
+    			sim.circuitFilePath = path;
+    			//sim.frameWrapper.setTitle(path);
     			} catch (MalformedURLException e) {
     				// TODO Auto-generated catch block
     				e.printStackTrace();

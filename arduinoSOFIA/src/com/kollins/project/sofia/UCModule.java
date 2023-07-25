@@ -51,9 +51,7 @@ import com.kollins.project.sofia.atmega328p.USART_ATmega328P;
 //import com.kollins.project.sofia.atmega328p.ADC_ATmega328P;
 import com.kollins.project.sofia.atmega328p.InterruptionModule_ATmega328P;
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.output.OutputFragment_ATmega328P;
-import com.kollins.project.sofia.ucinterfaces.ADCModule;
 import com.kollins.project.sofia.ucinterfaces.DataMemory;
-import com.kollins.project.sofia.ucinterfaces.IOModule;
 import com.kollins.project.sofia.ucinterfaces.InterruptionModule;
 //import com.kollins.project.sofia.ucinterfaces.OutputFragment;
 //import com.kollins.project.sofia.ucinterfaces.ProgramMemory;
@@ -62,12 +60,12 @@ import com.kollins.project.sofia.ucinterfaces.Timer1Module;
 import com.kollins.project.sofia.ucinterfaces.Timer2Module;
 import com.kollins.project.sofia.ucinterfaces.USARTModule;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 
 /**
  * Created by kollins on 3/7/18.
+ * Modified by Francisco Campos
  */
 
 public class UCModule  {
@@ -315,25 +313,34 @@ private static final int[] memoryBitPosition = getInputMemoryBitPosition();
               //threadScheduler = new Thread(new Scheduler());
 		    //threadScheduler.start();
 		  if(standAloneFlag){
+			  setIncrement(64);
 			  System.out.println("Running test");
 		  for (int j=0;j<500;j++){
 			  cpuModule.run();
 		  }
 		  
-		  for (int j=0;j<15_000_000;j++){
+		  for (int j=0;j<100000;j++){//15_000_000;j++){
 		//	  if(j%100_000==0)
 		//  System.out.println("run "+ j + " ");
 			     timer0.run();
-	             //   timer1.run();
-	             //   timer2.run();
-	             //   adc.run();
+	                timer1.run();
+	                timer2.run();
+	                adc.run();
 	             //   usart.run();
+			       dummyChar =usart.run();
+			       
+			       //  System.out.println("dummyChar "+dummyChar);
+			        	 if (dummyChar!=0)
+			        		 System.out.println(dummyChar);
+			        		 //  serialBufferOut.append(dummyChar);
+			      //   usart.run();
+				   
 			     //if(j%10000==0)
 			    	// System.out.println()
 	                cpuModule.run();
 	                ucView.run(); // this updates simulated time
 		  }
-		  
+		  System.out.println("Exit test runs");
 		  }
 		
 		} else {
@@ -354,10 +361,40 @@ private static final int[] memoryBitPosition = getInputMemoryBitPosition();
     
     //next: find lower prescaler among timers
    public int getPreScaler(){
-	   int[] values = {0,0,0};int min=5;//= new int[];
+	   int[] values = {0,0,0};int min=1024;//= new int[];
+	   // read bits that set prescaler value
 	   values[0] = 0x07 & dataMemory.readByte(DataMemory_ATmega328P.TCCR0B_ADDR);
 	   values[1] = 0x07 & dataMemory.readByte(DataMemory_ATmega328P.TCCR1B_ADDR);
 	   values[2] = 0x07 & dataMemory.readByte(DataMemory_ATmega328P.TCCR2B_ADDR);
+	   System.out.println("preacaler bits: " + values[0] +" "+ values[1] +" "+ values[2] );
+	   // configuration bits have different interpretation depending on the timer
+	   switch (values[0]) {
+	   case 0: values[0] = 64; break;
+	   case 1: values[0] = 1; break;
+	   case 2: values[0] = 8; break;
+	   case 3: values[0] = 64; break;
+	   case 4: values[0] = 256; break;
+	   case 5: values[0] = 1024; break;
+	   }
+	   switch (values[1]) {
+	   case 0: values[1] = 64; break;
+	   case 1: values[1] = 1; break;
+	   case 2: values[1] = 8; break;
+	   case 3: values[1] = 64; break;
+	   case 4: values[1] = 256; break;
+	   case 5: values[1] = 1024; break;
+	   }
+	   switch (values[2]) {
+	   case 0: values[2] = 64; break;
+	   case 1: values[2] = 1; break;
+	   case 2: values[2] = 8; break;
+	   case 3: values[2] = 32; break;
+	   case 4: values[2] = 64; break;
+	   case 5: values[2] = 128; break;
+	   case 6: values[2] = 256; break;
+	   case 7: values[2] = 1024; break;
+	   }
+	   //Find the minimum value of prescaler
 	   for (int i=0;i<=2;i++)
 		   if (values[i]<min)
 			   min=values[i];
@@ -488,6 +525,8 @@ public void cycle(){
     
     public void setIncrement(int inc){
     	timer0.setIncrement(inc);
+    	timer1.setIncrement(inc);
+    	timer2.setIncrement(inc);
     	ucView.setIncrement(inc);
     }
     public static int[] getInputMemoryAddress() {

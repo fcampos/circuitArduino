@@ -58,7 +58,7 @@ class ImportDialog extends FileDialog {
 	else{
 	 // System.out.println("You chose " + path + filename);
 	String content;
-	if (inStr.length() == 0){
+	if (inStr.length() == 0){ //DOING IMPORT
 		InputStream in;
 		try {
 			File file = new File(path+File.separator+filename );
@@ -67,6 +67,9 @@ class ImportDialog extends FileDialog {
 			content = IOUtils.toString( in,"UTF-8" ) ;
 			IOUtils.closeQuietly(in);
 			cframe.filetools.readSetup(content);
+			cframe.circuitFilePath = path+File.separator+filename;
+			cframe.circuitName = filename;
+			cframe.frameWrapper.setTitle(filename);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,14 +92,15 @@ class ImportDialog extends FileDialog {
         e.printStackTrace();
     } */
 	}
-	else
+	else // DOING SAVE
 		try {
 	//	Path file = Paths.get(path+filename);
 		//Files.write(file, inStr.getBytes());
 		File file = new File(path+File.separator+filename );
 		FileUtils.writeStringToFile(file, inStr,"UTF-8");
-
-
+		cframe.circuitFilePath = path+File.separator+filename;
+		cframe.circuitName = filename;
+		cframe.frameWrapper.setTitle(filename);
 		} catch (IOException e) {
 	        e.printStackTrace();
 	    }

@@ -8,9 +8,10 @@ public class startSimulation {
 	public static void main(String args[])  {//static method  
 	
 		ucmodule = new UCModule(true);
-		ucmodule.main(null);
+		ucmodule.main("C:\\Users\\FranciscoMateus\\git\\circuitArduino\\circuitArduino\\arduino\\DigitalInputPullup\\DigitalInputPullup.ino.standard.hex");// null);
 		System.out.println("Project Sofia");
 		System.out.println("setting up UC");
+		
 		ucmodule.setUpUc();
 		/*try {
 			Thread.sleep(1000);

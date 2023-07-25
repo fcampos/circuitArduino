@@ -30,7 +30,7 @@ public OutputFragment_ATmega328P simulatorOutputs;
 public int counter=0;
 //public boolean doneInit = false;
 CirSim sim;
-public boolean[] pinMode = new boolean[12];
+public boolean[] pinMode = new boolean[14];
 	public Arduino(CirSim sim, String urls) {
 		// TODO Auto-generated constructor stub
 	//	PinMode[0]=true;
@@ -67,7 +67,7 @@ public	void reload(){
 public void init(){
 	urls = sim.sketchURL;
 	System.out.println("initializing interpreter...");
-	ucModule = new UCModule(false);
+	ucModule = new UCModule(false);//(false);
 	ucModule.main(urls);
 	System.out.println("Project Sofia");
 	System.out.println("setting up UC");
@@ -75,20 +75,23 @@ public void init(){
 	
 	 //cycle through program to initialize registers
 	// we blindly (i.e. independently of the circuit simulation) run the cycle for a 1000? iterations in the hope that at the end the timers are configured and ports are set as inputs/outputs
-	 for (int j=0; j<1000;j++)
+	 for (int j=0; j<100000;j++)
 		 ucModule.cycle();
 	 System.out.println("prescaler: "+  ucModule.getPreScaler());
-	
-	 switch (ucModule.getPreScaler()) {
+	 prescaler =ucModule.getPreScaler();
+	 /*switch (ucModule.getPreScaler()) {
 	 case 1: prescaler = 1;break;
 	 case 2: prescaler = 8;break;
 	 case 3: prescaler = 64;break;
 	 case 4: prescaler = 256;break;
 	 case 5: prescaler = 1024;
-	 }
+	 }*/
+	 System.out.println("Pin modes:");
 	 for (int i=0;i<pinMode.length;i++) {
 		 pinMode[i] = ucModule.getPinMode(i)?true:false;
+		 System.out.print(ucModule.getPinMode(i)+" ");
 	 }
+	 System.out.println(" ");
 	 // restart to start from time 0
 	 
 	 ucModule.main(urls);
@@ -169,7 +172,7 @@ public boolean exists(){ return existsFlag;}
 public void cycle(){
 	counter++;
 	ucModule.cycle();
-//	System.out.println("cycling");
+	//System.out.println("cycling");
 	//if (counter%(256*250)==0)
 	//	System.out.println("counter "+counter);
 	/*

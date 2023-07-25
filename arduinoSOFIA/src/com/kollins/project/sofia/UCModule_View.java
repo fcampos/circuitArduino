@@ -51,10 +51,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.IOModule_ATmega328P;
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.input.InputFragment_ATmega328P;
 import com.kollins.project.sofia.atmega328p.iomodule_atmega328p.output.OutputFragment_ATmega328P;
-import com.kollins.project.sofia.extra.AboutPage;
-import com.kollins.project.sofia.extra.Settings;
-import com.kollins.project.sofia.extra.memory_map.MemoryFragment;
-import com.kollins.project.sofia.serial_monitor.SerialFragment;
+//import com.kollins.project.sofia.extra.AboutPage;
+//import com.kollins.project.sofia.extra.Settings;
+//import com.kollins.project.sofia.extra.memory_map.MemoryFragment;
+//import com.kollins.project.sofia.serial_monitor.SerialFragment;
 import com.kollins.project.sofia.ucinterfaces.DataMemory;
 import com.kollins.project.sofia.ucinterfaces.IOModule;
 import com.kollins.project.sofia.ucinterfaces.InputFragment;
@@ -66,6 +66,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by kollins on 3/23/18.
+ * Modified by Francisco Campos
  */
 
 public class UCModule_View {// extends Fragment {
@@ -99,9 +100,9 @@ public class UCModule_View {// extends Fragment {
 
     public OutputFragment outputFragment;
     public InputFragment inputFragment;
-    private SerialFragment serialFragment;
+    //private SerialFragment serialFragment;
     private IOModule ioModule;
-    private MemoryFragment memoryFragment;
+    //private MemoryFragment memoryFragment;
 
   //  private static UCModule.UCHandler uCHandler;
     private UCModule ucModule;
@@ -241,9 +242,9 @@ public long increment =1;;
         if (outputFragment != null) {
             outputFragment.resetOuputs();
         }
-        if (serialFragment != null) {
-            serialFragment.resetSerial();
-        }
+    //    if (serialFragment != null) {
+     //       serialFragment.resetSerial();
+      //  }
 
         simulatedTime = 0;
     }

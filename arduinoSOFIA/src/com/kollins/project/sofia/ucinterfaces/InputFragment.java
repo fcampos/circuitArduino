@@ -21,6 +21,7 @@ package com.kollins.project.sofia.ucinterfaces;
 
 /**
  * Created by kollins on 3/21/18.
+ * Modified by Francisco Campos
  */
 
 public interface InputFragment extends IOModule{

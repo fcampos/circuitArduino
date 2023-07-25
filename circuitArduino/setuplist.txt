@@ -10,6 +10,7 @@ pot.txt Potentiometer
 potdivide.txt Potentiometer Divider
 thevenin.txt Thevenin's Theorem
 norton.txt Norton's Theorem
+soundTest.txt Sound Test
 -
 +A/C Circuits
 capac.txt Capacitor
@@ -373,6 +374,7 @@ spark-marx.txt Marx Generator
 blink.txt blink
 analogReadSerial.txt analogReadSerial
 digitalReadSerial.txt digitalReadSerial
+readAnalogVoltage.txt readAnalogVoltage
 fade.txt fade
 -
 +Digital
@@ -380,12 +382,15 @@ blinkWithoutDelay.txt blinkWithoutDelay
 button.txt button
 debounce.txt debounce
 stateChangeDetection.txt stateChangeDetection
+digitalInputPullup.txt DigitalInputPullup
 -
 +Analog
 analogInOutSerial.txt analogInOutSerial
-analogInput.txt  analogInput
+analogInput.txt analogInput
 analogWriteMega.txt analogWriteMega
 fading.txt fading
+calibration.txt Calibration
+smoothing.txt Smoothing
 -
 -
 blank.txt Blank Circuit

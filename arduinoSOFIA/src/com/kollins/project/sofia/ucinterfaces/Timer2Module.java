@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+// Modified by Francisco Campos
 package com.kollins.project.sofia.ucinterfaces;
 
 public interface Timer2Module {
@@ -29,4 +29,5 @@ public interface Timer2Module {
     int CLOCK_PRESCALER_1024            = 7;
 
     void run();
+    void setIncrement(int inc);
 }

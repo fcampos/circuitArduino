@@ -34,6 +34,7 @@ import com.kollins.project.sofia.ucinterfaces.ProgramMemory;
 
 /**
  * Created by kollins on 3/9/18.
+ * Modified by Francisco Campos
  */
 
 public class CPUModule implements CPUInstructions {

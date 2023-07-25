@@ -43,6 +43,7 @@ import java.util.Objects;
 
 /**
  * Created by kollins on 3/23/18.
+ * Modified by Francisco Campos
  */
 
 public class IOModule_ATmega328P implements IOModule {//  extends Handler implements IOModule {
@@ -507,7 +508,7 @@ System.out.println(UCModule.MY_LOG_TAG+ "ERROR: setOC2B (IOModule) -> output lis
         protected Void execute(List<OutputPin_ATmega328P>... pins) {//doInBackground(List<OutputPin_ATmega328P>... pins) {
       //      Thread.currentThread().setName("ASYNC_PORTB_UPDATE");
         	  index = 0;
-       // 	System.out.println("ASYNC_PORTB_UPDATE");
+        //	System.out.println("ASYNC_PORTB_UPDATE");
             //Pin8 - Pin13
             for (int i = 8, bitPosition = 0; i <= 13; i++, bitPosition++) {
 
@@ -700,7 +701,7 @@ index = 0;
       //  @Override
         protected Void execute(List<OutputPin_ATmega328P>... pins){// doInBackground(List<OutputPin_ATmega328P>... pins) {
             //Thread.currentThread().setName("ASYNC_PORTD_UPDATE");
-          //  System.out.println("ASYNC_PORTD_UPDATE");
+        //    System.out.println("ASYNC_PORTD_UPDATE");
             index = 0;
             //Pin0 - Pin7
             for (int i = 0, bitPosition = 0; i <= 7; i++, bitPosition++) {
@@ -755,7 +756,9 @@ index = 0;
                             }
                         }
                     }
+                  //     System.out.print(" "+i+ " "+OutputFragment_ATmega328P.pinbuffer[i]);
                     outputFragment.writeFeedback(DataMemory_ATmega328P.PIND_ADDR, bitPosition, OutputFragment_ATmega328P.pinbuffer[i] != 0);
+                //    System.out.println(outputFragment.pinbuffer[0] +" "+ outputFragment.pinbuffer[1]+" "+ outputFragment.pinbuffer[2]+" "+ outputFragment.pinbuffer[3]+" "+ outputFragment.pinbuffer[4]);
                 }
 
             }

@@ -52,6 +52,7 @@ public class InitializeMenus {
 
 		mFile.add(sim.importItem = getMenuItem("Open"));
 		mFile.add(sim.exportItem = getMenuItem("Save"));
+		mFile.add(sim.exportAsItem = getMenuItem("Save as"));
 		//mFile.add(sim.importFritzingItem = getMenuItem("Import Fritzing"));
 		//mFile.add(sim.robotSimulation = getMenuItem("Robot Simulation"));
 		mFile.add(sim.printItem = getMenuItem("Print to SVG"));

@@ -194,7 +194,7 @@ public class CirSim extends JPanel
 	Label titleLabel;
 	public Button resetButton;
 	Button dumpMatrixButton;
-	MenuItem exportItem, importItem, exitItem, undoItem, redoItem, //exportLinkItem,
+	MenuItem exportItem,exportAsItem, importItem, exitItem, undoItem, redoItem, //exportLinkItem,
 	deleteItem, cutItem, copyItem, pasteItem, selectAllItem, optionsItem, printItem;
 	public MenuItem importFritzingItem, robotSimulation,arduinoSelectSketchItem,arduinoSketchItem,arduinoEditFileItem,arduinoReloadItem,arduinoEditOptionItem;
 	Menu optionsMenu;
@@ -370,6 +370,8 @@ public class CirSim extends JPanel
      String startCircuitText = null;
      String baseURL = "http://www.falstad.com/circuit/";
      public  String startDir = null;
+     public String circuitFilePath = "";//new String("");
+     public String circuitName = "";
      //////////////////////// NEW CLASSES /////////////////////////////////////////////////////
      public SVGGraphics2D g2;
      InitializeMenus menuInitializer;
@@ -836,7 +838,7 @@ public class CirSim extends JPanel
 		if (arduino.ucModule.serialBufferOut.length()>0)//&&!usePanel)
 			//serialMessagePersistent = arduino.interpreter.arduino.serialMessage;
 		//if(serialMessagePersistent.length()>0)
-			//g.drawString(serialMessagePersistent, 10, circuitArea.height-15);//*/
+			//g.drawString(serialMessagePersistent, 10, circuitArea.height-15);//
 		{//System.out.println(arduino.ucModule.serialBufferOut.substring(0));
 		//System.out.println(arduino.ucModule.serialBufferOut.substring(arduino.ucModule.serialBufferOut.length()-1));
 			if (arduino.ucModule.serialBufferOut.charAt(arduino.ucModule.serialBufferOut.length()-1)==10)
@@ -846,8 +848,8 @@ public class CirSim extends JPanel
 			//	System.out.println(arduino.ucModule.serialBufferOut.length());
 				
 		arduino.ucModule.serialBufferOut.delete(0,arduino.ucModule.serialBufferOut.length()-1);}
-	}
-		g.drawString(serialMessagePersistent, 10, circuitArea.height-15);}
+	g.drawString(serialMessagePersistent, 10, circuitArea.height-15);}
+		}
 	///////////////////////////////////////
 	if (showGridCheckItem.getState()){
 		g.setColor(Color.gray);
@@ -1413,7 +1415,8 @@ public class CirSim extends JPanel
 	time1= tm-lastIterTime;//System.nanoTime()-initialTm;
 	//	System.out.println("time elapsed" + time1);
 //	System.out.println("simulation time elapsed" + iter*timeStep*1e3);
-	 if (playThread.wform.elm!=null&&time1<500){ //(false){//
+	//ONLY ADJUST TIME STEP IF NOT SIMULATING ARDUINO - IN THAT CASE THE TIME STEP IS FIXED BT ARDUINO
+	 if (playThread.wform.elm!=null&&time1<500&&!arduino.existsFlag){ //(false){//
 	if ((time1>iter*timeStep*1e3*1.1)){//||(playThread.wform.sampleCount>=.75*playThread.wform.buffer.length)){
 	timeStep=timeStep*1.1;
 	System.out.println("increasing time step");
@@ -1554,6 +1557,8 @@ public class CirSim extends JPanel
 	if (e.getSource() == dumpMatrixButton)
 		dumpMatrix = true;
 	if (e.getSource() == exportItem)
+		filetools.doImport(false, false,circuitFilePath);
+	if (e.getSource() == exportAsItem)
 		filetools.doImport(false, false,new String(""));
 	if (e.getSource() == optionsItem)
 		doEdit(new EditOptions(this));
@@ -1670,7 +1675,7 @@ public class CirSim extends JPanel
 		scopes[menuScope].resetGraph();
 	    cv.repaint();
 	}
-	if (ac.indexOf("setup ") == 0) {
+	if (ac.indexOf("setup ") == 0) { // THIS IS TO LOAD EXAMPLES FROM SETUPLIST
 		edittools.pushUndo();
 	    filetools.readSetupFile(ac.substring(6),
 			  ((MenuItem) e.getSource()).getLabel());

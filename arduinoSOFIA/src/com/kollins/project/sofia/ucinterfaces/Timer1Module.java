@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+//Modified by Francisco Campos
 package com.kollins.project.sofia.ucinterfaces;
 
 public interface Timer1Module {
@@ -29,4 +29,5 @@ public interface Timer1Module {
     int EXTERNAL_CLOCK_T1_RISING_EDGE   = 7;
 
     void run();
+    void setIncrement(int inc);
 }

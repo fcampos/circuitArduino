@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+// Modified by Francisco Campos
 package com.kollins.project.sofia.atmega328p;
 
 //import android.util.Log;
@@ -57,6 +57,7 @@ public class Timer1_ATmega328P implements Timer1Module {
     public static boolean enableICRWrite;
 
     private static short clockCount;
+    public static int increment=1;
 
     private static boolean match_A, match_B;
     private static char progress, icr1, ocr1a, ocr1b;
@@ -88,7 +89,8 @@ public class Timer1_ATmega328P implements Timer1Module {
 
         clockCount = 0;
     }
-
+    @Override
+    public void setIncrement(int inc) {increment = inc;};
     @Override
     public void run() {
 
@@ -201,7 +203,7 @@ public class Timer1_ATmega328P implements Timer1Module {
             @Override
             public boolean work() {
 //                Log.i(TIMER1_TAG, "Prescaler 8");
-                if (++clockCount < 8){
+                if ((clockCount+=increment) < 8){//(++clockCount < 8){
                     return false;
                 } else {
                     clockCount = 0;
@@ -213,7 +215,7 @@ public class Timer1_ATmega328P implements Timer1Module {
             @Override
             public boolean work() {
 //                Log.i(TIMER1_TAG, "Prescaler 64");
-                if (++clockCount < 64){
+                if ((clockCount+=increment) < 64){//(++clockCount < 64){
                     return false;
                 } else {
                     clockCount = 0;
@@ -225,7 +227,7 @@ public class Timer1_ATmega328P implements Timer1Module {
             @Override
             public boolean work() {
 //                Log.i(TIMER1_TAG, "Prescaler 256");
-                if (++clockCount < 256){
+                if ((clockCount+=increment) < 256){//(++clockCount < 256){
                     return false;
                 } else {
                     clockCount = 0;
@@ -237,7 +239,7 @@ public class Timer1_ATmega328P implements Timer1Module {
             @Override
             public boolean work() {
 //                Log.i(TIMER1_TAG, "Prescaler 1024");
-                if (++clockCount < 1024){
+                if ((clockCount+=increment) < 1024){//(++clockCount < 1024){
                     return false;
                 } else {
                     clockCount = 0;
