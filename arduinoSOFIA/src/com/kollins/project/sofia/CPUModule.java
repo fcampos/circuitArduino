@@ -23,6 +23,7 @@ package com.kollins.project.sofia;
 ///
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 //import android.util.Log;
@@ -78,17 +79,22 @@ public class CPUModule implements CPUInstructions {
     }
 
     public void fill_INSTRUCTION_IDs(){
-    	try {
-			Scanner s = new Scanner(new File("C:\\Users\\FranciscoMateus\\Documents\\disciplinas\\EI\\falstanInMatlabHistory\\ProjectSOFIA-master\\ProjectSOFIA-master\\app\\src\\main\\assets\\instruction_db.txt"));
-			while (s.hasNext())
-			{
-				INSTRUCTION_ID[s.nextInt()] = (short) s.nextInt();
-			   
-			}
-    	} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	
+    		Scanner s;
+    		System.out.println(this.getClass().getClassLoader().getResource("instruction_db.txt").toString());
+    		 
+				
+				s = new Scanner( this.getClass().getClassLoader().getResourceAsStream("instruction_db.txt"));
+				while (s.hasNext())
+				{
+					INSTRUCTION_ID[s.nextInt()] = (short) s.nextInt();
+				   
+				}
+			
+			//Scanner s = new Scanner(new File("C:\\Users\\FranciscoMateus\\Documents\\disciplinas\\EI\\falstanInMatlabHistory\\ProjectSOFIA-master\\ProjectSOFIA-master\\app\\src\\main\\assets\\instruction_db.txt"));
+			
+    	
+			
     
     }
     public void run() {
