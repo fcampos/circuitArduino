@@ -1,5 +1,5 @@
 $ 3 4.0E-6 265423.40209079534 50 5.0 50
-& Calibration.ino.standard.hex C:\Users\FranciscoMateus\git\circuitArduino\circuitArduino\arduino\Calibration\Calibration.ino.standard.hex
+& Calibration.ino.standard.hex Calibration\Calibration.ino.standard.hex
 162 368 216 368 304 1 2.1024259 1.0 0.0 0.0 LED
 r 368 216 304 216 0 100.0
 g 368 304 368 328 0

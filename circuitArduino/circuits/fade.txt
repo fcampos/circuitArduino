@@ -1,5 +1,5 @@
 $ 3 4.0E-6 153.04748616641584 50 5.0 50
-& Fade.ino C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/\arduino\\Fade\\Fade.ino.standard.hex
+& Fade.ino Fade\\Fade.ino.standard.hex
 162 416 176 416 264 1 2.1024259 1.0 0.0 0.0 LED
 g 416 264 416 296 0
 r 416 176 304 176 0 100.0

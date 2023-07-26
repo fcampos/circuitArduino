@@ -1,5 +1,5 @@
 $ 3 4.0E-6 2828.254192033498 50 5.0 50
-& AnalogInOutSerial.ino C:/Users/FranciscoMateus/git/circuitArduino/circuitArduino/\arduino\\AnalogInOutSerial\AnalogInOutSerial.ino.standard.hex
+& AnalogInOutSerial.ino AnalogInOutSerial\AnalogInOutSerial.ino.standard.hex
 203 344 224 312 224 0 9
 204 208 208 248 208 0 0
 r 392 224 488 224 0 200.0

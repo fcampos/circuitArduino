@@ -81,10 +81,11 @@ public class CPUModule implements CPUInstructions {
     public void fill_INSTRUCTION_IDs(){
     	
     		Scanner s;
-    		System.out.println(this.getClass().getClassLoader().getResource("instruction_db.txt").toString());
+    		System.out.println("Here we go");
+    		System.out.println(this.getClass().getClassLoader().getResource("\\assets\\instruction_db.txt"));
     		 
 				
-				s = new Scanner( this.getClass().getClassLoader().getResourceAsStream("instruction_db.txt"));
+				s = new Scanner( this.getClass().getClassLoader().getResourceAsStream("\\assets\\instruction_db.txt"));
 				while (s.hasNext())
 				{
 					INSTRUCTION_ID[s.nextInt()] = (short) s.nextInt();

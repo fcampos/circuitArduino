@@ -1,5 +1,5 @@
 $ 3 4.0E-6 10.20027730826997 50 5.0 50
-& Smoothing.ino.standard.hex C:\Users\FranciscoMateus\git\circuitArduino\circuitArduino\arduino\Smoothing\Smoothing.ino.standard.hex
+& Smoothing.ino.standard.hex Smoothing\Smoothing.ino.standard.hex
 v 280 240 280 152 0 1 400.0 1.0 0.0 0.0 0.5
 v 280 312 280 240 0 1 40.0 5.0 0.0 0.0 0.5
 g 280 312 280 336 0
