@@ -23,7 +23,11 @@ package com.kollins.project.sofia;
 ///
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 //import android.util.Log;
@@ -70,7 +74,12 @@ public class CPUModule implements CPUInstructions {
         this.dataMemory = dataMemory;
 //        this.uCHandler = uCHandler;
 //        this.uCModule = uCModule;
-        fill_INSTRUCTION_IDs();
+        try {
+			fill_INSTRUCTION_IDs();
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         clockCycleDone = false;
         needMoreClockCycles = false;
         interruptionReturn = false;
@@ -78,20 +87,62 @@ public class CPUModule implements CPUInstructions {
         clockCycleNeeded = 0;
     }
 
-    public void fill_INSTRUCTION_IDs(){
+    public void fill_INSTRUCTION_IDs() throws MalformedURLException{
     	
-    		Scanner s;
+    		Scanner s = null;
     		System.out.println("Here we go");
-    		System.out.println(this.getClass().getClassLoader().getResource("\\assets\\instruction_db.txt"));
-    		 
+    		System.out.println(getClass().getProtectionDomain().getCodeSource().getLocation());
+    		System.out.println(this.getClass().getClassLoader().getResource("instruction_db.txt"));
+    		URI uri;
+    		
+			try {
+				uri = getClass().getProtectionDomain().getCodeSource().getLocation().toURI();
+				if (uri.toString().contains(".jar")) // runnning inside jar
+				{
+				URI parent = uri.getPath().endsWith("/") ? uri.resolve("..") : uri.resolve(".");
+				System.out.println(parent);
+				System.out.println(new  URL(parent.toURL(),"bin" +File.separator +"assets"+File.separator +"instruction_db.txt"));
+				try {
+					s = new Scanner( (new  URL(parent.toURL(),"assets"+File.separator +"instruction_db.txt")).openStream());
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				s = new Scanner( this.getClass().getClassLoader().getResourceAsStream("\\assets\\instruction_db.txt"));
+				}
+				else // Not running inside jar
+				{
+					URI parent = uri.getPath().endsWith("/") ? uri.resolve("..") : uri.resolve(".");
+					System.out.println(parent);
+				//	s = new Scanner( this.getClass().getClassLoader().getResourceAsStream(File.separator +"assets"+File.separator +"instruction_db.txt"));
+					System.out.println(new  URL(parent.toURL(),"bin" +File.separator +"assets"+File.separator +"instruction_db.txt"));
+					try {
+						s = new Scanner( (new  URL(parent.toURL(),"bin" +File.separator +"assets"+File.separator +"instruction_db.txt")).openStream());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+						}
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+    		
+    		
+    		 
+				if (s!=null)
+			//	s = new Scanner( this.getClass().getClassLoader().getResourceAsStream("\\assets\\instruction_db.txt"));
 				while (s.hasNext())
 				{
 					INSTRUCTION_ID[s.nextInt()] = (short) s.nextInt();
 				   
 				}
-			
+				else
+					System.out.println("COULD NOT LOAD RESSOURCE FILE");
 			//Scanner s = new Scanner(new File("C:\\Users\\FranciscoMateus\\Documents\\disciplinas\\EI\\falstanInMatlabHistory\\ProjectSOFIA-master\\ProjectSOFIA-master\\app\\src\\main\\assets\\instruction_db.txt"));
 			
     	
